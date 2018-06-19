@@ -1,0 +1,28 @@
+version: "3.5"
+services:
+  data:
+    build: ../sl-data
+    volumes:
+      - ../sl-data:/app
+      - /app/node_modules
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: yarn start
+    networks:
+      - local_graphcool
+    environment:
+      GRAPHCOOL_HOST: localfaas
+  webhooks:
+      build: ../sl-webhooks
+      volumes:
+        - ../sl-webhooks:/app
+        - /app/node_modules
+      command: yarn start
+      networks:
+      - local_graphcool
+      ports:
+        - '5464:5464'
+
+networks:
+  local_graphcool:
+    name: local_graphcool
+    driver: bridge
