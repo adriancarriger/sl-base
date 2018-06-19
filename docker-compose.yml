@@ -11,10 +11,10 @@ services:
       - local_graphcool
     environment:
       GRAPHCOOL_HOST: localfaas
-  webhooks:
-      build: ../sl-webhooks
+  lambda:
+      build: ../sl-lambda
       volumes:
-        - ../sl-webhooks:/app
+        - ../sl-lambda:/app
         - /app/node_modules
       command: yarn start
       networks:
