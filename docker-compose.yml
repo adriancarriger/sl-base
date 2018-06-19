@@ -3,8 +3,6 @@ services:
   data:
     build: ../sl-data
     volumes:
-      - ../sl-data:/app
-      - /app/node_modules
       - /var/run/docker.sock:/var/run/docker.sock
     command: yarn start
     networks:
@@ -13,9 +11,6 @@ services:
       GRAPHCOOL_HOST: localfaas
   lambda:
       build: ../sl-lambda
-      volumes:
-        - ../sl-lambda:/app
-        - /app/node_modules
       command: yarn start
       networks:
       - local_graphcool
