@@ -9,7 +9,6 @@ services:
       - local_graphcool
     environment:
       GRAPHCOOL_HOST: localfaas
-      GRAPHCOOL_TOKEN: $GRAPHCOOL_TOKEN
   lambda:
       build: ../sl-lambda
       command: yarn start
