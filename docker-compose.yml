@@ -1,24 +1,42 @@
-version: "3.5"
+version: '3.5'
 services:
   data:
     build: ../sl-data
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: yarn start
-    networks:
-      - local_graphcool
+    command: sh -c './wait-for -t 180 prisma:4466 -- yarn start'
+    depends_on:
+      - prisma
+  prisma:
+    image: prismagraphql/prisma:1.10
+    restart: always
+    ports:
+    - "4466:4466"
+    depends_on:
+      - postgres
     environment:
-      GRAPHCOOL_HOST: localfaas
-      GRAPHCOOL_TOKEN: $GRAPHCOOL_TOKEN
+      PRISMA_CONFIG: |
+        port: 4466
+        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+        # managementApiSecret: my-secret
+        databases:
+          default:
+            connector: postgres
+            host: postgres
+            port: 5432
+            user: prisma
+            password: prisma
+            migrations: true
   lambda:
       build: ../sl-lambda
       command: yarn start
-      networks:
-      - local_graphcool
       ports:
         - '5464:5464'
-
-networks:
-  local_graphcool:
-    name: local_graphcool
-    driver: bridge
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+    volumes:
+      - postgres:/var/lib/postgresql/data
+volumes:
+  postgres:
