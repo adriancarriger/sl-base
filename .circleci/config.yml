@@ -21,7 +21,7 @@ jobs:
           name: Move repo into subfolder
           command: |
             cp -r /app/. ~/sl-base
-            mv -v ~/sl-server /app/sl-base
+            mv -v ~/sl-base /app/sl-base
       - run:
           name: Get sl-* dependencies
           command: ./sl-base/init.sh
