@@ -1,5 +1,9 @@
 version: "3.5"
 services:
+  server:
+    volumes:
+      - ../sl-server:/app
+      - /app/node_modules
   data:
     volumes:
       - ../sl-data:/app

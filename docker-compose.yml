@@ -1,5 +1,11 @@
 version: '3.5'
 services:
+  server:
+    build: ../sl-server
+    ports:
+        - '4332:4332'
+    depends_on:
+      - data
   data:
     build: ../sl-data
     command: sh -c './wait-for -t 180 prisma:4466 -- yarn start'
