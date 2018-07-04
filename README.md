@@ -21,7 +21,9 @@ A docker-compose base repo for running serverless microservices locally
 ### Staging
 
 - **Data** [https://us1.prisma.sh/adrian-carriger-35d3e6/sl-data/staging](https://us1.prisma.sh/adrian-carriger-35d3e6/sl-data/staging)
+- **Server** [https://x53koow0pf.execute-api.us-west-2.amazonaws.com/staging](https://x53koow0pf.execute-api.us-west-2.amazonaws.com/staging)
 
 ### Production
 
 - **Data** [https://us1.prisma.sh/adrian-carriger-35d3e6/sl-data/production](https://us1.prisma.sh/adrian-carriger-35d3e6/sl-data/production)
+- **Server** [https://x53koow0pf.execute-api.us-west-2.amazonaws.com/production](https://x53koow0pf.execute-api.us-west-2.amazonaws.com/production)
