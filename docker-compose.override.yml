@@ -3,10 +3,12 @@ services:
   server:
     volumes:
       - ../sl-server:/app
+      - graphql-types:/app/src/generated
       - /app/node_modules
   data:
     volumes:
       - ../sl-data:/app
+      - graphql-types:/app/generated
       - /app/node_modules
   lambda:
       volumes:

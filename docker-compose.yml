@@ -3,11 +3,13 @@ services:
   server:
     build: ../sl-server
     ports:
-        - '4332:4332'
+      - '4332:4332'
     depends_on:
       - data
     environment:
       PRISMA_MANAGEMENT_API_SECRET: ${PRISMA_MANAGEMENT_API_SECRET:-dev-management-secret}
+    volumes:
+      - graphql-types:/app/src/generated
   data:
     build: ../sl-data
     command: sh -c './wait-for -t 180 prisma:4466 -- yarn start'
@@ -15,11 +17,13 @@ services:
       - prisma
     environment:
       PRISMA_MANAGEMENT_API_SECRET: ${PRISMA_MANAGEMENT_API_SECRET:-dev-management-secret}
+    volumes:
+      - graphql-types:/app/generated
   prisma:
     image: prismagraphql/prisma:1.10
     restart: always
     ports:
-    - "4466:4466"
+      - "4466:4466"
     depends_on:
       - postgres
     environment:
@@ -35,10 +39,10 @@ services:
             password: prisma
             migrations: true
   lambda:
-      build: ../sl-lambda
-      command: yarn start
-      ports:
-        - '5464:5464'
+    build: ../sl-lambda
+    command: yarn start
+    ports:
+      - '5464:5464'
   postgres:
     image: postgres
     restart: always
@@ -49,3 +53,4 @@ services:
       - postgres:/var/lib/postgresql/data
 volumes:
   postgres:
+  graphql-types:
