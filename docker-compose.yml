@@ -1,5 +1,12 @@
 version: '3.5'
 services:
+  react:
+    build: ../sl-react
+    command: sh -c 'PORT=4333 yarn start'
+    ports:
+      - '4333:4333'
+    depends_on:
+      - server
   server:
     build: ../sl-server
     command: sh -c './wait-for-file src/generated/prisma.graphql -- yarn start'

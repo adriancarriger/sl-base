@@ -1,5 +1,9 @@
 version: "3.5"
 services:
+  react:
+    volumes:
+      - ../sl-react:/app
+      - /app/node_modules
   server:
     volumes:
       - ../sl-server:/app
