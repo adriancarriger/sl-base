@@ -18,13 +18,16 @@ A docker-compose base repo for running serverless microservices locally
 
 - **Data** [http://localhost:4466/](http://localhost:4466/)
 - **Server** [http://localhost:4332/](http://localhost:4332/)
+- **React** [http://localhost:4333/](http://localhost:4333/)
 
 ### Staging
 
 - **Data** [https://us1.prisma.sh/adrian-carriger-35d3e6/sl-data/staging](https://us1.prisma.sh/adrian-carriger-35d3e6/sl-data/staging)
 - **Server** [https://x53koow0pf.execute-api.us-west-2.amazonaws.com/staging](https://x53koow0pf.execute-api.us-west-2.amazonaws.com/staging)
+- **React** [http://sl-react-staging.netlify.com](http://sl-react-staging.netlify.com)
 
 ### Production
 
 - **Data** [https://us1.prisma.sh/adrian-carriger-35d3e6/sl-data/production](https://us1.prisma.sh/adrian-carriger-35d3e6/sl-data/production)
 - **Server** [https://x53koow0pf.execute-api.us-west-2.amazonaws.com/production](https://x53koow0pf.execute-api.us-west-2.amazonaws.com/production)
+- **React** [http://sl-react.netlify.com](http://sl-react.netlify.com)
